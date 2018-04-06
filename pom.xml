@@ -142,25 +142,25 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <configuration>
-                    <descriptors>
-                        <descriptor>src/assembly/calvalus-bundle.xml</descriptor>
-                    </descriptors>
-                    <finalName>calvalus-bundle</finalName>
-                    <attach>false</attach>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>calvalus-bundle-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--<plugin>-->
+                <!--<artifactId>maven-assembly-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<descriptors>-->
+                        <!--<descriptor>src/assembly/calvalus-bundle.xml</descriptor>-->
+                    <!--</descriptors>-->
+                    <!--<finalName>calvalus-bundle</finalName>-->
+                    <!--<attach>false</attach>-->
+                <!--</configuration>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>calvalus-bundle-assembly</id>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>single</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
 
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>

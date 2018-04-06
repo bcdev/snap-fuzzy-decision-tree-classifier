@@ -2,7 +2,7 @@ package org.esa.snap.fuzzydectree;
 
 import org.junit.Test;
 
-public class FuzzyDecisionTreeClassifierOpTest {
+public class IntertidalFlatClassifierOpTest {
 
     @Test
     public void testFuzzyDecisionTreeOp() throws Exception {

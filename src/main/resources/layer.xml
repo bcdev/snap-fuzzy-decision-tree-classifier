@@ -4,12 +4,12 @@
 
     <folder name="Actions">
         <folder name="Operators">
-            <file name="org-esa-snap-fuzzydectree-FuzzyDecisionTreeClassifierOpAction.instance">
+            <file name="org-esa-snap-fuzzydectree-IntertidalFlatClassifierOpAction.instance">
                 <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.alwaysEnabled"/>
                 <attr name="delegate" methodvalue="org.esa.snap.core.gpf.ui.DefaultOperatorAction.create"/>
-                <attr name="displayName" stringvalue="Fuzzy Decision Tree Classifier"/>
-                <attr name="operatorName" stringvalue="FuzzyDecisionTreeClassifier"/>
-                <attr name="dialogTitle" stringvalue="Fuzzy Decision Tree Classifier"/>
+                <attr name="displayName" stringvalue="Intertidal Flat Classifier"/>
+                <attr name="operatorName" stringvalue="IntertidalFlatClassifier"/>
+                <attr name="dialogTitle" stringvalue="Intertidal Flat Classifier"/>
                 <attr name="targetProductNameSuffix" stringvalue="_fuzzydectree"/>
                 <attr name="helpId" stringvalue="fuzzydectreeTool"/>
             </file>
@@ -19,18 +19,30 @@
     <folder name="Menu">
         <folder name="Raster">
             <folder name="Classification">
-                <folder name="Fuzzy Decision Tree Classifier">
-                    <attr name="displayName" stringvalue="Fuzzy Decision Tree Classifier"/>
-                    <attr name="position" intvalue="211"/>
-                    <file name="org-esa-snap-sarong-FuzzyDecisionTreeClassifierOpAction.shadow">
-                        <attr name="originalFile"
-                              stringvalue="Actions/Operators/org-esa-snap-sarong-FuzzyDecisionTreeClassifierOpAction.instance"/>
+                <folder name="Fuzzy Classification (Java)">
+                    <file name="org-esa-snap-fuzzydectree-IntertidalFlatClassifierOpAction.shadow">
+                        <attr name="originalFile" stringvalue="Actions/Operators/org-esa-snap-fuzzydectree-IntertidalFlatClassifierOpAction.instance"/>
                         <attr name="position" intvalue="1"/>
+                        <attr name="displayName" stringvalue="Fuzzy Classification (Java Op)"/>
                     </file>
                 </folder>
             </folder>
         </folder>
     </folder>
+
+    <!--<folder name="Menu">-->
+        <!--<folder name="Raster">-->
+            <!--<folder name="Classification">-->
+                <!--<folder name="Fuzzy Classification">-->
+                    <!--<file name="PyIntertidalFlatFuzzyDectreeOpAction.shadow">-->
+                        <!--<attr name="originalFile" stringvalue="Actions/Operators/PyIntertidalFlatFuzzyDectreeOpAction.instance"/>-->
+                        <!--<attr name="position" intvalue="0"/>-->
+                        <!--<attr name="displayName" stringvalue="Fuzzy Classification"/>-->
+                    <!--</file>-->
+                <!--</folder>-->
+            <!--</folder>-->
+        <!--</folder>-->
+    <!--</folder>-->
 
     <folder name="Services">
         <folder name="JavaHelp">
