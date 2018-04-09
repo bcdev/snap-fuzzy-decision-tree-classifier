@@ -35,7 +35,7 @@ public class IntertidalFlatClassifierOp extends Operator {
     @TargetProduct(description = "The target product.")
     private Product targetProduct;
 
-    IntertidalFlatClassifierFuz intertidalFlatClassifier;
+    private IntertidalFlatClassifierFuz intertidalFlatClassifier;
 
     @Override
     public void initialize() throws OperatorException {
