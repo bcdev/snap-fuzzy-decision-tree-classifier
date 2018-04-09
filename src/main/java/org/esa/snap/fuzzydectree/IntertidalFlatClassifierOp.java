@@ -10,7 +10,6 @@ import org.esa.snap.core.gpf.annotations.OperatorMetadata;
 import org.esa.snap.core.gpf.annotations.SourceProduct;
 import org.esa.snap.core.gpf.annotations.TargetProduct;
 import org.esa.snap.core.util.ProductUtils;
-import org.esa.snap.fuzzydectree.generated.IntertidalFlatClassifier;
 import org.esa.snap.fuzzydectree.generated.IntertidalFlatClassifierFuz;
 
 import java.awt.*;
@@ -47,39 +46,42 @@ public class IntertidalFlatClassifierOp extends Operator {
     @Override
     public void computeTileStack(Map<Band, Tile> targetTiles, Rectangle targetRectangle, ProgressMonitor pm) throws OperatorException {
         final int numSrcBands = intertidalFlatClassifier.getInputSize();
-        final int numTargetBands = intertidalFlatClassifier.getOutputSize();
         Tile[] srcTile = new Tile[numSrcBands];
         for (int i = 0; i < numSrcBands; i++) {
             final String srcBandName = IntertidalFlatClassifierConstants.INPUT_NAMES[i][1];
             srcTile[i] = getSourceTile(sourceProduct.getBand(srcBandName), targetRectangle);
         }
 
+        final Tile finalClassTargetTile =
+                targetTiles.get(targetProduct.getBand(IntertidalFlatClassifierConstants.FINAL_CLASS_BAND_NAME));
+        final Tile fuzzyMaxValTargetTile =
+                targetTiles.get(targetProduct.getBand(IntertidalFlatClassifierConstants.FUZZY_MAX_VAL_BAND_NAME));
+        final String bsumTargetBandName = intertidalFlatClassifier.getOutputNames()[13];
+        final Tile bsumTargetTile = targetTiles.get(targetProduct.getBand(bsumTargetBandName));
+
         double[] inputs = new double[numSrcBands];
-        double[] outputs = new double[numTargetBands];
+        double[] classificationOutputs = new double[intertidalFlatClassifier.getOutputSize()];  // 13 classes + bsum
         for (int y = targetRectangle.y; y < targetRectangle.y + targetRectangle.height; y++) {
             checkForCancellation();
             for (int x = targetRectangle.x; x < targetRectangle.x + targetRectangle.width; x++) {
                 for (int i = 0; i < numSrcBands; i++) {
                     inputs[i] = srcTile[i].getSampleFloat(x, y);
                 }
-                if (x == 1490 && y == 2850) {
-                    System.out.println("x = " + x);
-                }
-                intertidalFlatClassifier.apply(inputs, outputs);
+                intertidalFlatClassifier.apply(inputs, classificationOutputs);
                 double outputMax = Double.MIN_VALUE;
                 int maxOutputIndex = -1;
-                for (int i = 0; i < numSrcBands; i++) {
-                    if (outputs[i] > outputMax) {
-                        outputMax = outputs[i];
+                for (int i = 0; i < classificationOutputs.length-1; i++) {    // 13 classes
+                    if (classificationOutputs[i] > outputMax) {
+                        outputMax = classificationOutputs[i];
                         maxOutputIndex = IntertidalFlatClassifierConstants.CLASSIF_CLASS[i];
                     }
                     final String targetBandName = intertidalFlatClassifier.getOutputNames()[i];
-                    targetTiles.get(targetProduct.getBand(targetBandName)).setSample(x, y, outputs[i]);
+                    targetTiles.get(targetProduct.getBand(targetBandName)).setSample(x, y, classificationOutputs[i]);
                 }
-                targetTiles.get(targetProduct.getBand(IntertidalFlatClassifierConstants.FINAL_CLASS_BAND_NAME)).
-                        setSample(x, y, maxOutputIndex);
-                targetTiles.get(targetProduct.getBand(IntertidalFlatClassifierConstants.FUZZY_MAX_VAL_BAND_NAME)).
-                        setSample(x, y, outputMax);
+
+                bsumTargetTile.setSample(x, y, classificationOutputs[13]);
+                finalClassTargetTile.setSample(x, y, maxOutputIndex);
+                fuzzyMaxValTargetTile.setSample(x, y, outputMax);
             }
         }
     }

@@ -16,13 +16,13 @@ public class IntertidalFlatClassifierConstants {
             {"b3", "schatten_abundance"},
             {"b4", "summary_error"},
             {"b5", "steigung_red_nIR"},
-//            {"b6", "steigung_nIR_SWIR1"},
+//            {"b6", "steigung_nIR_SWIR1"},     // not used
             {"b7", "flh"},
             {"b8", "ndvi"},
             {"b12", "reflec_483"},
             {"b13", "reflec_561"},
             {"b14", "reflec_655"},
-            {"b15", "reflec_865"},
+//            {"b15", "reflec_865"},           // not used
             {"b16", "reflec_1609"},
             {"b19", "muschelindex"}
     };

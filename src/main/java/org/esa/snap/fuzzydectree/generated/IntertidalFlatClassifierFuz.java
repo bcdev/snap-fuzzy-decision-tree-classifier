@@ -86,14 +86,16 @@ public class IntertidalFlatClassifierFuz  {
         nodata = max(nodata, _t1);
         // else if (b8 is B8_veg and b1 is B1_veg) or b8 is B8_veg_wasser:
         _t1 = min(_t0, 1.0 - _t1);
-        double _t2 = min(1.0 - _t1, max(min(B8_B8_veg(b8), B1_B1_veg(b1)), B8_B8_veg_wasser(b8)));
+//        double _t2 = min(1.0 - _t1, max(min(B8_B8_veg(b8), B1_B1_veg(b1)), B8_B8_veg_wasser(b8)));
+        double _t2 = min(_t1, max(min(B8_B8_veg(b8), B1_B1_veg(b1)), B8_B8_veg_wasser(b8)));
         //     if b5 is B5_wasser:
         double _t3 = min(_t2, B5_B5_wasser(b5));
         //         Wasser: true
         Wasser = max(Wasser, _t3);
         //     else if (b19 is B19_muschel and (b8 is B8_muschel_min and b8 is B8_muschel_max) and b7 is B7_muschel) or (b8 is B8_muschel_min and bsum is BSum_schill_1) or (b8 is B8_muschel_schill and bsum is BSum_schill_2):
         _t3 = min(_t2, 1.0 - _t3);
-        double _t4 = min(1.0 - _t3, max(min(B19_B19_muschel(b19), min(min(B8_B8_muschel_min(b8), B8_B8_muschel_max(b8)), B7_B7_muschel(b7))), max(min(B8_B8_muschel_min(b8), BSum_BSum_schill_1(bsum)), min(B8_B8_muschel_schill(b8), BSum_BSum_schill_2(bsum)))));
+//        double _t4 = min(1.0 - _t3, max(min(B19_B19_muschel(b19), min(min(B8_B8_muschel_min(b8), B8_B8_muschel_max(b8)), B7_B7_muschel(b7))), max(min(B8_B8_muschel_min(b8), BSum_BSum_schill_1(bsum)), min(B8_B8_muschel_schill(b8), BSum_BSum_schill_2(bsum)))));
+        double _t4 = min(_t3, max(min(B19_B19_muschel(b19), min(min(B8_B8_muschel_min(b8), B8_B8_muschel_max(b8)), B7_B7_muschel(b7))), max(min(B8_B8_muschel_min(b8), BSum_BSum_schill_1(bsum)), min(B8_B8_muschel_schill(b8), BSum_BSum_schill_2(bsum)))));
         //         if bsum is BSum_schill_1a:
         double _t5 = min(_t4, BSum_BSum_schill_1a(bsum));
         //             Schill: true
@@ -104,7 +106,8 @@ public class IntertidalFlatClassifierFuz  {
         Muschel = max(Muschel, _t5);
         //     else if b8 is B8_veg_dicht:
         _t4 = min(_t3, 1.0 - _t4);
-        double _t6 = min(1.0 - _t4, B8_B8_veg_dicht(b8));
+//        double _t6 = min(1.0 - _t4, B8_B8_veg_dicht(b8));
+        double _t6 = min(_t4, B8_B8_veg_dicht(b8));
         //         dense2: true
         dense2 = max(dense2, _t6);
         //     else:
@@ -113,38 +116,47 @@ public class IntertidalFlatClassifierFuz  {
         dense1 = max(dense1, _t3);
         // else if b1 is B1_strand:
         _t2 = min(_t1, 1.0 - _t2);
-        double _t7 = min(1.0 - _t2, B1_B1_strand(b1));
+//        double _t7 = min(1.0 - _t2, B1_B1_strand(b1));
+        double _t7 = min(_t2, B1_B1_strand(b1));
         //     Strand: true
         Strand = max(Strand, _t7);
         // else if b3 is B3_sand:
         _t7 = min(_t2, 1.0 - _t7);
-        double _t8 = min(1.0 - _t7, B3_B3_sand(b3));
+//        double _t8 = min(1.0 - _t7, B3_B3_sand(b3));
+        double _t8 = min(_t7, B3_B3_sand(b3));
         //     Sand: true
         Sand = max(Sand, _t8);
         // else if b3 is B3_sand2 and b8 is B8_sediment_wasser:
         _t8 = min(_t7, 1.0 - _t8);
-        double _t9 = min(1.0 - _t8, min(B3_B3_sand2(b3), B8_B8_sediment_wasser(b8)));
+//        double _t9 = min(1.0 - _t8, min(B3_B3_sand2(b3), B8_B8_sediment_wasser(b8)));
+        double _t9 = min(_t8, min(B3_B3_sand2(b3), B8_B8_sediment_wasser(b8)));
         //     Misch: true
         Misch = max(Misch, _t9);
         // else if b3 is B3_misch and b8 is B8_sediment_wasser:
         _t9 = min(_t8, 1.0 - _t9);
-        double _t10 = min(1.0 - _t9, min(B3_B3_misch(b3), B8_B8_sediment_wasser(b8)));
+        double _t10 = min(_t9, min(B3_B3_misch(b3), B8_B8_sediment_wasser(b8)));
+//        double _t10 = min(1.0 - _t9, min(B3_B3_misch(b3), B8_B8_sediment_wasser(b8)));
         //     Misch2: true
         Misch2 = max(Misch2, _t10);
         // else if b3 is B3_schlick and b2 is B2_schlick and b8 is B8_sediment_wasser:
         _t10 = min(_t9, 1.0 - _t10);
-        double _t11 = min(1.0 - _t10, min(B3_B3_schlick(b3), min(B2_B2_schlick(b2), B8_B8_sediment_wasser(b8))));
+//        double _t11 = min(1.0 - _t10, min(B3_B3_schlick(b3), min(B2_B2_schlick(b2), B8_B8_sediment_wasser(b8))));
+        double _t11 = min(_t10, min(B3_B3_schlick(b3), min(B2_B2_schlick(b2), B8_B8_sediment_wasser(b8))));
         //     Schlick: true
         Schlick = max(Schlick, _t11);
         // else if b16 is B16_sediment_wasser and b8 is B8_sediment_wasser:
         _t11 = min(_t10, 1.0 - _t11);
-        double _t12 = min(1.0 - _t11, min(B16_B16_sediment_wasser(b16), B8_B8_sediment_wasser(b8)));
+//        double _t12 = min(1.0 - _t11, min(B16_B16_sediment_wasser(b16), B8_B8_sediment_wasser(b8)));
+        double _t12 = min(_t11, min(B16_B16_sediment_wasser(b16), B8_B8_sediment_wasser(b8)));
         //     schlick_t: true
         schlick_t = max(schlick_t, _t12);
         // else:
-        _t1 = min(_t0, 1.0 - _t1);
+//        _t1 = min(_t0, 1.0 - _t1);
+//             Wasser2: true
+//        Wasser2 = max(Wasser2, _t1);
+        _t12 = min(_t11, 1.0 - _t12);
         //     Wasser2: true
-        Wasser2 = max(Wasser2, _t1);
+        Wasser2 = max(Wasser2, _t12);
 
         outputs[0] = nodata;
         outputs[1] = Wasser;
