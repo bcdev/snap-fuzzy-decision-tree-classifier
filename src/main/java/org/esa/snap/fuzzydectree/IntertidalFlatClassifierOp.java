@@ -114,9 +114,9 @@ public class IntertidalFlatClassifierOp extends Operator {
                 new ColorPaletteDef.Point[IntertidalFlatClassifierConstants.CLASSIF_CLASS.length];
         for (int i = 0; i < IntertidalFlatClassifierConstants.CLASSIF_CLASS.length; i++) {
             final int classifClass = IntertidalFlatClassifierConstants.CLASSIF_CLASS[i];
-            final int r = IntertidalFlatClassifierConstants.CLASSIF_RGB[classifClass - 1][0];
-            final int g = IntertidalFlatClassifierConstants.CLASSIF_RGB[classifClass - 1][1];
-            final int b = IntertidalFlatClassifierConstants.CLASSIF_RGB[classifClass - 1][2];
+            final int r = IntertidalFlatClassifierConstants.CLASSIF_RGB[i][0];
+            final int g = IntertidalFlatClassifierConstants.CLASSIF_RGB[i][1];
+            final int b = IntertidalFlatClassifierConstants.CLASSIF_RGB[i][2];
             final Color color = new Color(r, g, b);
             final String descr = intertidalFlatClassifier.getOutputNames()[i];
             points[i] = new ColorPaletteDef.Point(classifClass, color, descr);
