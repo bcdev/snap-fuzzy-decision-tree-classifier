@@ -1,1 +1,1 @@
-Processors and tools needed within the SArONG (Scientific Assessment of Satellite Ocean Glitter) project.
+Performs classifications based on fuzzy decision trees. 
