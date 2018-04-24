@@ -1,10 +1,7 @@
 package org.esa.snap.fuzzydectree;
 
 /**
- * todo: add comment
- * To change this template use File | Settings | File Templates.
- * Date: 06.04.2018
- * Time: 13:19
+ * Constants for intertidal flat fuzzy classification.
  *
  * @author olafd
  */
@@ -27,26 +24,43 @@ public class IntertidalFlatClassifierConstants {
             {"b19", "muschelindex"}
     };
 
+
+    // CLASSIF_CLASS_* mapping follows original 'intertidal_flat_classif_envi_dec_tree.txt' by KS, Aug. 2017
+
     public static final int[] CLASSIF_CLASS = {
             11, 10, 13, 8, 7, 6, 9, 1, 2, 3, 4, 5, 12
     };
 
-    public static final int[][] CLASSIF_RGB = {
-            {0, 0, 0},
-            {0, 0, 255},
-            {255, 113, 255},
-            {255, 0, 0},
-            {46, 139, 87},
-            {0, 255, 0},
-            {230, 230, 230},
+    public static final String[] CLASSIF_CLASS_DESCR = {
+            "Sand",
+            "Misch",
+            "Misch2",
+            "Schlick",
+            "Schlick_t",
+            "dense1",
+            "dense2",
+            "Muschel",
+            "Strand",
+            "Wasser",
+            "nodata",
+            "Wasser2",
+            "Schill"
+    };
+
+    public static final int[][] CLASSIF_CLASS_RGB = {
             {255, 255, 75},
             {255, 215, 0},
             {238, 154, 0},
             {125, 38, 205},
             {167, 80, 162},
-            {0, 60, 255}
+            {0, 255, 0},
+            {46, 139, 87},
+            {255, 0, 0},
+            {230, 230, 230},
+            {0, 0, 255},
+            {0, 0, 0},
+            {0, 60, 255},
+            {255, 113, 255}
     };
 
-    public static final String FINAL_CLASS_BAND_NAME = "final_class";
-    public static final String FUZZY_MAX_VAL_BAND_NAME = "fuzzy_max_value";
 }
