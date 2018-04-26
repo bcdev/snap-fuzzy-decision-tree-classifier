@@ -26,7 +26,7 @@ import java.util.Random;
  *
  * @author olafd
  */
-@OperatorMetadata(alias = "GenericClassifier", version = "0.1",
+@OperatorMetadata(alias = "GenericClassifier", version = "0.9-SNAPSHOT",
         authors = "Olaf Danne, Norman Fomferra (Brockmann Consult)",
         category = "Classification",
         copyright = "Copyright (C) 2018 by Brockmann Consult",
@@ -35,7 +35,7 @@ public class GenericClassifierOp extends Operator {
 
 
     @Parameter(description = "A yml file defining the decision tree for fuzzy classification.",
-            label = "Decision tree yml file.")
+            label = "Decision tree yml file")
     private File yamlFile;
 
     @SourceProduct(description = "Source product",

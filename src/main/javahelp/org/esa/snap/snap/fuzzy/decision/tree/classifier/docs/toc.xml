@@ -10,9 +10,9 @@
     <tocitem text="Sentinel Toolbox Application">
         <tocitem text="Raster">
             <tocitem text="Classification">
-                <tocitem text="Fuzzy Decision Tree Classifier" target="fuzzydectreeTool">
-                    <tocitem text="Algorithm Specification" target="fuzzydectreeAlgorithmSpecification"/>
-                    <tocitem text="Processor Description" target="fuzzydectreeProcessorDescription"/>
+                <tocitem text="Fuzzy Classification" target="fuzzydectreeClassif">
+                    <tocitem text="Generic Classifier" target="genericClassifier"/>
+                    <tocitem text="Intertidal Flat Classifier" target="intertidalFlatClassifier"/>
                 </tocitem>
             </tocitem>
         </tocitem>

@@ -20,7 +20,7 @@ import java.util.Map;
  *
  * @author olafd
  */
-@OperatorMetadata(alias = "IntertidalFlatClassifier", version = "0.1",
+@OperatorMetadata(alias = "IntertidalFlatClassifier", version = "0.9-SNAPSHOT",
         authors = "Olaf Danne, Norman Fomferra (Brockmann Consult)",
         category = "Classification",
         copyright = "Copyright (C) 2018 by Brockmann Consult",

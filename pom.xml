@@ -21,7 +21,7 @@
 
     <groupId>org.esa.snap</groupId>
     <artifactId>snap-fuzzy-decision-tree-classifier</artifactId>
-    <version>0.8-SNAPSHOT</version>
+    <version>0.9-SNAPSHOT</version>
 
     <name>SNAP Fuzzy Decision Tree Classifier</name>
     <packaging>nbm</packaging>
